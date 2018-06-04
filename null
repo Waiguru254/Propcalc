@@ -1,0 +1,65 @@
+<table class="table table-striped table-hover table-bordered table-condensed table-responsive" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Factors</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Groups Counts</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Groups Proportions (%)</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Row.names </th>
+   <th style="text-align:right;"> Grp- 1 </th>
+   <th style="text-align:right;"> Grp- 2 </th>
+   <th style="text-align:right;"> Grp- 3 </th>
+   <th style="text-align:right;"> Grp 1 </th>
+   <th style="text-align:right;"> Grp 2 </th>
+   <th style="text-align:right;"> Grp 3 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Cohabiting [kuishi pamoja] </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3.70 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Married [Olewa] </td>
+   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 236 </td>
+   <td style="text-align:right;"> 85.19 </td>
+   <td style="text-align:right;"> 79.78 </td>
+   <td style="text-align:right;"> 87.08 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Never married [sijawai kuolewa] </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1.85 </td>
+   <td style="text-align:right;"> 1.12 </td>
+   <td style="text-align:right;"> 0.37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Single, not in union [simo mahusianoni] </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 9.26 </td>
+   <td style="text-align:right;"> 17.98 </td>
+   <td style="text-align:right;"> 11.81 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Widowed [kufiwa] </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 1.12 </td>
+   <td style="text-align:right;"> 0.37 </td>
+  </tr>
+</tbody>
+</table>

@@ -9,6 +9,7 @@
 sam2 <- function(row, column, decimal=2, percent=c("col","row"), missing = TRUE,sort.group = c(decreasing, 
                                                                                                  "increasing"), cum.percent = !any(is.na(row)),las=0, main = "auto", xlab = "auto", 
                    ylab = "auto", col="auto",  ...) {
+  row<- as.factor(row)
   rowr<- forcats:: fct_explicit_na(row,na_level = "(Missing)")
   dose<- data.frame(rowr)
   colnames(dose)<-c("Factors")

@@ -97,7 +97,7 @@ samhtml <- function (factor, group) {
   #################################
   #output<-intersect(colnames(mat),colnames(fun_pt))
   output <- merge(mat, fun_pt, by = "row.names", all = TRUE)
-  suppressWarnings(kableExtra::kable(output, format = "html") %>%
+  suppressMessages(kableExtra::kable(output, format = "html") %>%
                      kable_styling(bootstrap_options = c("striped", "bordered"),font_size = 10,
                                    full_width = F) %>%
                      add_header_above(c("Factors" = 1, "Groups Counts" = ncol(mat), "Groups Proportions (%)" = ncol(fun_pt))))}

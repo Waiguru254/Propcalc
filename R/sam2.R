@@ -1,4 +1,4 @@
-#' Two Way Tabulation That Includes the Missing values 
+#' Two Way Tabulation That Includes the Missing values (Columnswise) 
 #' @name sam2
 #' @param row The factors to be analysed
 #' @param  column The groups to be considered 

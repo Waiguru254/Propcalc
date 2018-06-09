@@ -2,13 +2,12 @@
 % Please edit documentation in R/samEx.R
 \name{samEx}
 \alias{samEx}
-\alias{samtwo}
 \title{Two Way Tabulation That Excluding the Missing values}
 \usage{
-samtwo(row, column, decimal = 1, percent = c("col", "row"),
-  missing = TRUE, sort.group = c(decreasing, "increasing"),
-  cum.percent = !any(is.na(row)), las = 0, main = "auto", xlab = "auto",
-  ylab = "auto", col = "auto", ...)
+samEx(row, column, decimal = 1, percent = c("col", "row"), missing = TRUE,
+  sort.group = c(decreasing, "increasing"), cum.percent = !any(is.na(row)),
+  las = 0, main = "auto", xlab = "auto", ylab = "auto", col = "auto",
+  ...)
 }
 \arguments{
 \item{row}{The factors to be analysed}

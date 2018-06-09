@@ -2,7 +2,7 @@
 % Please edit documentation in R/sam2.R
 \name{sam2}
 \alias{sam2}
-\title{Two Way Tabulation That Includes the Missing values}
+\title{Two Way Tabulation That Includes the Missing values (Columnswise)}
 \usage{
 sam2(row, column, decimal = 2, percent = c("col", "row"), missing = TRUE,
   sort.group = c(decreasing, "increasing"), cum.percent = !any(is.na(row)),
@@ -18,5 +18,5 @@ sam2(row, column, decimal = 2, percent = c("col", "row"), missing = TRUE,
 value
 }
 \description{
-Two Way Tabulation That Includes the Missing values
+Two Way Tabulation That Includes the Missing values (Columnswise)
 }

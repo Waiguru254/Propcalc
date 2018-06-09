@@ -1,107 +1,15 @@
+#' One Way Tabulation That Includes the Missing values (Columnswise) 
+#' @name sam1
+#' @param row The factors to be analysed
+#' @return  value
+#' @export sam1
+#' 
 sam1 <- function (row, decimal = 1, sort.group = c(FALSE, "decreasing", 
                                                   "increasing"), cum.percent = !any(is.na(row)), graph = FALSE, 
                   missing = TRUE, bar.values = c("frequency", "percent", "none"), 
                   horiz = FALSE, cex = 1, cex.names = 1, main = "auto", xlab = "auto", 
                   ylab = "auto", col = "auto", gen.ind.vars = FALSE, ...) 
-  row<- as.factor(row)
-  row<- forcats:: fct_explicit_na(row,na_level = "Missing")
 {
-  if (graph) {
-    var1 <- deparse(substitute(row))
-    if (length(var1) > 1) {
-      string2 <- var1[length(var1)]
-    }
-    else if (substring(search()[2], first = 1, last = 8) != 
-             "package:") {
-      string2 <- attr(get(search()[2]), "var.labels")[attr(get(search()[2]), 
-                                                           "names") == deparse(substitute(row))]
-      if (length(string2) == 0) {
-        string2 <- deparse(substitute(row))
-      }
-      if (string2 == "") {
-        string2 <- deparse(substitute(row))
-      }
-    }
-    else {
-      string2 <- deparse(substitute(row))
-    }
-    string3 <- paste(titleString()$distribution.of, string2)
-    table.to.plot <- table(row)
-    if (missing == TRUE) {
-      table.to.plot <- table(row, exclude = NULL)
-      if (is.factor(row)) {
-        table.to.plot <- as.table(summary(row))
-      }
-      if (is.na(names(table.to.plot)[length(names(table.to.plot))]) | 
-          names(table.to.plot)[length(names(table.to.plot))] == 
-          "NA's") 
-        names(table.to.plot)[length(names(table.to.plot))] <- "Missing"
-    }
-    scale.label <- as.character(titleString()$frequency)
-    suppressWarnings(if (bar.values == "percent") {
-      table.to.plot <- round(table.to.plot/sum(table.to.plot) * 
-                               100, decimal)
-      scale.label <- "%"
-    })
-    suppressWarnings(if (sort.group == "decreasing") {
-      table.to.plot <- table.to.plot[order(table.to.plot, 
-                                           names(table.to.plot), decreasing = TRUE)]
-      if (max(nchar(names(table.to.plot))) > 8 & length(table.to.plot) > 
-          6) {
-        table.to.plot <- table.to.plot[order(table.to.plot, 
-                                             names(table.to.plot), decreasing = FALSE)]
-      }
-    })
-    suppressWarnings(if (sort.group == "increasing") {
-      table.to.plot <- table.to.plot[order(table.to.plot, 
-                                           names(table.to.plot), decreasing = FALSE)]
-      if (max(nchar(names(table.to.plot))) > 8 & length(table.to.plot) > 
-          6) {
-        table.to.plot <- table.to.plot[order(table.to.plot, 
-                                             names(table.to.plot), decreasing = TRUE)]
-      }
-    })
-    if(any(col == "auto")){
-      if (length(names(table.to.plot)) < 3){
-        colours <- "grey"
-      }else{
-        colours <- c("white",2:length(names(table.to.plot)))
-      }
-    }else{
-      colours <- col
-    }
-    if ((max(nchar(names(table.to.plot))) > 8 & length(table.to.plot) > 
-         6) | horiz == TRUE) {
-      par(mai = c(0.95625, 0.1, 0.76875, 0.39375) + 0.1 + 
-            c(0, par()$cin[1] * max(nchar(names(table.to.plot))) * 
-                0.75 * cex.names, 0, 0))
-      y.coordinates <- barplot(table.to.plot, main = ifelse(main == 
-                                                              "auto", string3, main), horiz = TRUE, las = 1, 
-                               xlim = c(0, max(table.to.plot) * 1.2), xlab = ifelse(xlab == 
-                                                                                      "auto", scale.label, xlab), cex.names = cex.names, col=colours,
-                               ...)
-      suppressWarnings(if (bar.values == "frequency" | 
-                           bar.values == "percent" | length(bar.values) == 
-                           3) {
-        text(table.to.plot, y.coordinates, as.character(table.to.plot), 
-             pos = 4, offset = 0.3, cex = cex)
-      })
-      par(mai = c(0.95625, 0.76875, 0.76875, 0.39375))
-    }
-    else {
-      x.coordinates <- barplot(table.to.plot, main = ifelse(main == 
-                                                              "auto", string3, main), ylab = ifelse(ylab == 
-                                                                                                      "auto", scale.label, ylab), cex.names = cex.names, 
-                               ylim = c(0, max(table.to.plot) * 1.1), col=colours,
-                               ...)
-      suppressWarnings(if (bar.values == "frequency" | 
-                           bar.values == "percent" | length(bar.values) == 
-                           3) {
-        text(x.coordinates, table.to.plot, as.character(table.to.plot), 
-             pos = 3, cex = cex)
-      })
-    }
-  }
   if (any(is.na(row))) {
     if (is.factor(row)) {
       output0 <- t(t(as.table(summary(row))))

@@ -2,7 +2,12 @@
 % Please edit documentation in R/sampct.r
 \name{sampct}
 \alias{sampct}
-\title{Two Way Analysis}
+\title{Two Way Analysis That includes NA's}
+\usage{
+sampct(row, column, decimal = 1, percent = c("both", "col", "row"),
+  graph = FALSE, las = 0, main = "auto", xlab = "auto", ylab = "auto",
+  col = "auto", ...)
+}
 \arguments{
 \item{row}{The factors to be analysed}
 
@@ -12,5 +17,5 @@
 value
 }
 \description{
-Two Way Analysis
+Two Way Analysis That includes NA's
 }

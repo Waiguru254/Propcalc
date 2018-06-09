@@ -10,7 +10,7 @@
 sampct <- function(row, column, decimal=1, percent=c("both","col","row"), graph=FALSE, las=0, main = "auto", xlab = "auto", 
                    ylab = "auto", col="auto",  ...) {
   row<- as.factor(row)
-  rowr<- forcats:: fct_explicit_na(row,na_level = "(Missing)")
+  rowr<- forcats:: fct_explicit_na(row,na_level = "Missing")
   dose<- data.frame(rowr)
   colnames(dose)<-c("Factors")
   row <- dose$Factors

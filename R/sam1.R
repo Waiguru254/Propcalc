@@ -1,36 +1,36 @@
-sam1 <- function (x0, decimal = 1, sort.group = c(FALSE, "decreasing", 
-                                                  "increasing"), cum.percent = !any(is.na(x0)), graph = FALSE, 
+sam1 <- function (row, decimal = 1, sort.group = c(FALSE, "decreasing", 
+                                                  "increasing"), cum.percent = !any(is.na(row)), graph = FALSE, 
                   missing = TRUE, bar.values = c("frequency", "percent", "none"), 
                   horiz = FALSE, cex = 1, cex.names = 1, main = "auto", xlab = "auto", 
                   ylab = "auto", col = "auto", gen.ind.vars = FALSE, ...) 
-  x0<- as.factor(x0)
-  x0<- forcats:: fct_explicit_na(x0,na_level = "Missing")
+  row<- as.factor(row)
+  row<- forcats:: fct_explicit_na(row,na_level = "Missing")
 {
   if (graph) {
-    var1 <- deparse(substitute(x0))
+    var1 <- deparse(substitute(row))
     if (length(var1) > 1) {
       string2 <- var1[length(var1)]
     }
     else if (substring(search()[2], first = 1, last = 8) != 
              "package:") {
       string2 <- attr(get(search()[2]), "var.labels")[attr(get(search()[2]), 
-                                                           "names") == deparse(substitute(x0))]
+                                                           "names") == deparse(substitute(row))]
       if (length(string2) == 0) {
-        string2 <- deparse(substitute(x0))
+        string2 <- deparse(substitute(row))
       }
       if (string2 == "") {
-        string2 <- deparse(substitute(x0))
+        string2 <- deparse(substitute(row))
       }
     }
     else {
-      string2 <- deparse(substitute(x0))
+      string2 <- deparse(substitute(row))
     }
     string3 <- paste(titleString()$distribution.of, string2)
-    table.to.plot <- table(x0)
+    table.to.plot <- table(row)
     if (missing == TRUE) {
-      table.to.plot <- table(x0, exclude = NULL)
-      if (is.factor(x0)) {
-        table.to.plot <- as.table(summary(x0))
+      table.to.plot <- table(row, exclude = NULL)
+      if (is.factor(row)) {
+        table.to.plot <- as.table(summary(row))
       }
       if (is.na(names(table.to.plot)[length(names(table.to.plot))]) | 
           names(table.to.plot)[length(names(table.to.plot))] == 
@@ -102,14 +102,14 @@ sam1 <- function (x0, decimal = 1, sort.group = c(FALSE, "decreasing",
       })
     }
   }
-  if (any(is.na(x0))) {
-    if (is.factor(x0)) {
-      output0 <- t(t(as.table(summary(x0))))
-      output1 <- (t(t(table(x0))))
+  if (any(is.na(row))) {
+    if (is.factor(row)) {
+      output0 <- t(t(as.table(summary(row))))
+      output1 <- (t(t(table(row))))
     }
     else {
-      output0 <- t(t(table(x0, exclude = NULL)))
-      output1 <- (t(t(table(x0))))
+      output0 <- t(t(table(row, exclude = NULL)))
+      output1 <- (t(t(table(row))))
     }
     percent0 <- output0[, 1]/sum(output0) * 100
     percent1 <- output1[, 1]/sum(output1[, 1], na.rm = TRUE) * 
@@ -146,13 +146,13 @@ sam1 <- function (x0, decimal = 1, sort.group = c(FALSE, "decreasing",
     rownames(output)[nrow(output)] <- "  Total"
   }
   else {
-    output <- (t(t(table(x0))))
+    output <- (t(t(table(row))))
     suppressWarnings(if (sort.group == "decreasing") {
-      output <- output[order(table(x0), names(table(x0)), 
+      output <- output[order(table(row), names(table(row)), 
                              decreasing = TRUE), ]
     })
     suppressWarnings(if (sort.group == "increasing") {
-      output <- output[order(table(x0), names(table(x0)), 
+      output <- output[order(table(row), names(table(row)), 
                              decreasing = FALSE), ]
     })
     percent <- output/sum(output) * 100
@@ -172,21 +172,21 @@ sam1 <- function (x0, decimal = 1, sort.group = c(FALSE, "decreasing",
   }
   if (substring(search()[2], first = 1, last = 8) != "package:") {
     options(warn = -1)
-    first.line <- paste(deparse(substitute(x0)), ":", attr(get(search()[2]), 
+    first.line <- paste(deparse(substitute(row)), ":", attr(get(search()[2]), 
                                                            "var.labels")[attr(get(search()[2]), "names") == 
-                                                                           deparse(substitute(x0))], "\n")
+                                                                           deparse(substitute(row))], "\n")
     options(warn = TRUE)
   }
   else {
-    first.line <- paste(deparse(substitute(x0)), ":", "\n")
+    first.line <- paste(deparse(substitute(row)), ":", "\n")
   }
   if (gen.ind.vars) {
-    if(!is.factor(x0)) {
-      warning(paste(as.character(substitute(x0)),"is not factor. Indicator variables have not been generated!"))
+    if(!is.factor(row)) {
+      warning(paste(as.character(substitute(row)),"is not factor. Indicator variables have not been generated!"))
     }else{  
-      mod.mat <- model.matrix (~ x0 -1)
+      mod.mat <- model.matrix (~ row -1)
       for (i in 1:ncol(mod.mat)) {
-        assign (paste(deparse(substitute(x0)),substr(colnames(mod.mat)[i],3,nchar(colnames(mod.mat)[i])), sep=""), mod.mat[,i], pos=1)
+        assign (paste(deparse(substitute(row)),substr(colnames(mod.mat)[i],3,nchar(colnames(mod.mat)[i])), sep=""), mod.mat[,i], pos=1)
       }}
   }
   returns <- list(first.line = first.line, output.table = output)

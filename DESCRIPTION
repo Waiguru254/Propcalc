@@ -7,7 +7,7 @@ Maintainer: Waiguru <waiguru@lytonsanalytics.com>
 Description: To seive the output of Epicalc Package, include missing values in One and Two way analysis and create Kable tables. 
 Depends:
     kableExtra, 
-    forcats
+    forcats, epicalc
 License: Lytons 
 Encoding: UTF-8
 LazyData: true

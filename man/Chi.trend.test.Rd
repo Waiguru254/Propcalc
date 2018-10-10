@@ -2,7 +2,7 @@
 % Please edit documentation in R/sampct.r
 \name{Chi.trend.test}
 \alias{Chi.trend.test}
-\title{Two Way Analysis That includes NA's}
+\title{Chi-Square Test for Trend in Proportions (The Cochran-Armitage Trend Test)}
 \usage{
 Chi.trend.test(binomial,ordinal,table)
 }

@@ -7,8 +7,8 @@
 Chi.trend.test(binomial,ordinal,table)
 }
 \arguments{
-\item{binomial}{The factors to be analysed}
-\item{ordinal}{the groups to be considered}
+\item{binomial}{Binomial variable}
+\item{ordinal}{Ordinal varible}
 \item{ordinal}{a table}
 }
 \value{

@@ -2,18 +2,18 @@
 % Please edit documentation in R/sampct.r
 \name{Chi.trend.test}
 \alias{Chi.trend.test}
-\title{Chi-Square Test for Trend in Proportions (The Cochran-Armitage Trend Test)}
+\title{Test for Trend in Proportions (The Cochran-Armitage Trend Test)}
 \usage{
 Chi.trend.test(binomial,ordinal,table)
 }
 \arguments{
 \item{binomial}{Binomial variable}
-\item{ordinal}{Ordinal varible}
-\item{ordinal}{a table}
+\item{ordinal}{Ordinal variable}
+\item{ordinal}{table}
 }
 \value{
 value
 }
 \description{
-Two Way Analysis That includes NA's
+Cochran-Armitage Trend Test
 }

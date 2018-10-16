@@ -51,14 +51,4 @@ variables in \code{x} should be taken.}
 An object of class "table2".
 }
 \description{
-There are two interfaces, the default, which typically takes a list of
-\code{data.frame}s for \code{x}, and the formula interface. The formula
-interface is less flexible, but simpler to use and designed to handle the
-most common use cases. It is important to use factors appropriately for
-categorical variables (i.e. have the levels labeled properly and in the
-desired order). The contents of the table can be customized by providing
-user-defined `renderer' functions. Customization of the table appearance is
-deliberately not attempted, as this is best accomplished with CSS. To
-facilitate this, some tags (such as row labels) are given specific classes
-for easy CSS selection.
 }

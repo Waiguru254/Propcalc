@@ -62,7 +62,7 @@ signif_pad <- function(x, digits=3, round.integers=TRUE, round5up=TRUE) {
   
   ifelse(is.na(x), NA, paste(cx, add.dec, pad, sep=""))
 }
-
+require(Formula)
 #' Compute some basic descriptive statistics.
 #'
 #' Values of type \code{factor}, \code{character} and \code{logical} are
@@ -448,7 +448,7 @@ parse.abbrev.render.code <-
 render.continuous.default <- function(x, ...) {
   with(stats.apply.rounding(stats.default(x), ...), c("",
                                                       "Mean (SD)"         = sprintf("%s (%s)", MEAN, SD),
-                                                      "Median [Q1, Q2]" = sprintf("%s [%s, %s]", MEDIAN, q25, q75)))
+                                                      "Median [Q1, Q3]" = sprintf("%s [%s, %s]", MEDIAN, q25, q75)))
 }
 
 #' Render categorical values for table output.

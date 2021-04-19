@@ -1,0 +1,59 @@
+
+library(readxl)
+require(dplyr)
+odkrlabels<- function(xlsform,dataName) {
+          ################################   survey   ################################
+    ###Cleaning the type and label variables
+    ###Removing leading and trailing spaces using trimws() function
+    vlabels<- paste("ODK to R",dataName,"Value Labels Scripts.R",sep=" ")
+    survey <- as.data.frame(xlsx::read.xlsx2(xlsform,sheetName='survey'))%>%
+      dplyr:: select(type,name,label)%>%
+      filter(grepl('select_one|select_multiple|integer|text',type))%>%   ###Filtering variables that need value labels
+      mutate(type= trimws(gsub("select_one","",
+                   gsub("select_multiple","",
+                   gsub("'", "",gsub("\"", "",
+                   gsub("(?<=[\\s])\\s*|^\\s+|\\s+$", "",type, perl=TRUE)))))),
+             label=gsub('<[^>]+>','',gsub("select_one","",
+                                          gsub("select_multiple","",
+                                               gsub("'", "",gsub("\"", "",
+                                                                 gsub("(?<=[\\s])\\s*|^\\s+|\\s+$", "",label, perl=TRUE)))))),
+             var_labels=paste(name,"=\'",label,"\')",sep=""))%>%
+      mutate(var_labeeds=paste(dataName," <- expss::apply_labels(",dataName,",",var_labels,sep="")) %>%
+      select(var_labeeds)
+      for (i in 1:nrow(survey)){
+        eval(parse(text=paste(survey$var_labeeds[i],sep="")), envir=.GlobalEnv)
+      }
+    varnolabel<-warnings()
+    ################################## choices  ###################################
+    #For single select variables
+    choices <- as.data.frame(xlsx::read.xlsx2(xlsform,sheetName='choices'))%>%
+      {if("list_name" %in% names(.)) rename(., list.name=list_name) else .} %>%
+      {if("value" %in% names(.)) rename(., name=value) else .}%>%
+      filter(!is.na(list.name))%>%
+      distinct(list.name,name, .keep_all= TRUE)%>%
+      mutate(value_s=paste(paste('\"',label, '\"', sep=""),paste('\"',name,'\"',sep=""),sep = " = "))%>%
+      group_by(list.name) %>% 
+      mutate(value_label = paste0(value_s, collapse = ","),
+             list.name=trimws(list.name))%>%
+      filter (!duplicated(value_label))%>%
+      select(value_label,list.name)%>%
+      rename(type = list.name)
+    survey_type<- as.data.frame(xlsx::read.xlsx2(xlsform,sheetName='survey'))%>%
+      dplyr:: select(type)%>%
+      filter(grepl('select_one',type))%>%
+      mutate(type=gsub("select_one","",type))
+      survey_varname<- as.data.frame(xlsx::read.xlsx2(xlsform,sheetName='survey'))%>%
+      dplyr:: select(name,type)%>%
+      filter(grepl('select_one',type))%>%
+      mutate(type=trimws(gsub("select_one","",type)))%>%
+      dplyr:: select(name,type)%>%
+      full_join(choices,by = 'type')%>%
+      filter(!is.na(name))%>%
+      mutate(val_labs=paste(dataName," <- expss::apply_labels(",dataName,',',name,"=",'c(',value_label,'))',sep=""))%>%
+      dplyr:: select(val_labs)
+     for (j in 1:nrow(survey_varname)){
+     eval(parse(text=paste(survey_varname$val_labs[j],sep="")),envir=.GlobalEnv)
+
+    }
+}
+   

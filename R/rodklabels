@@ -1,7 +1,7 @@
 
 library(readxl)
 require(dplyr)
-odkrlabels<- function(xlsform,dataName) {
+rodklabels<- function(xlsform,dataName) {
           ################################   survey   ################################
     ###Cleaning the type and label variables
     ###Removing leading and trailing spaces using trimws() function
